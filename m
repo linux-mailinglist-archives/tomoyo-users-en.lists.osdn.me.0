@@ -2,40 +2,46 @@ Return-Path: <tomoyo-users-en-bounces@lists.osdn.me>
 X-Original-To: lists+tomoyo-users-en@lfdr.de
 Delivered-To: lists+tomoyo-users-en@lfdr.de
 Received: from lists.osdn.me (gw0.osdn.jp [202.221.179.250])
-	by mail.lfdr.de (Postfix) with ESMTP id 116ED1626F
-	for <lists+tomoyo-users-en@lfdr.de>; Tue,  7 May 2019 12:57:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTP id 24F4F35BF0
+	for <lists+tomoyo-users-en@lfdr.de>; Wed,  5 Jun 2019 13:47:16 +0200 (CEST)
 X-Original-To: tomoyo-users-en@lists.osdn.me
 Delivered-To: lists-post+tomoyo-users-en@lists.osdn.me
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
  sf-lists.priv.osdn.jp
-X-Spam-Level: 
-X-Spam-Status: No, score=0.0 required=7.0 tests=none autolearn=disabled
- version=3.4.2
-Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
+X-Spam-Level: *
+X-Spam-Status: No, score=1.2 required=7.0 tests=HTML_MESSAGE
+ autolearn=disabled version=3.4.2
+Received: from ige-mx-01.igefa.de (ige-mx-01.igefa.de [87.191.32.109])
  by sf-lists.priv.osdn.jp (Postfix) with ESMTP
- for <tomoyo-users-en@lists.osdn.me>; Tue,  7 May 2019 19:57:40 +0900 (JST)
-Received: from fsav101.sakura.ne.jp (fsav101.sakura.ne.jp [27.133.134.228])
- by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id x47Avdas070650;
- Tue, 7 May 2019 19:57:39 +0900 (JST)
- (envelope-from penguin-kernel@i-love.sakura.ne.jp)
-Received: from www262.sakura.ne.jp (202.181.97.72)
- by fsav101.sakura.ne.jp (F-Secure/fsigk_smtp/530/fsav101.sakura.ne.jp);
- Tue, 07 May 2019 19:57:39 +0900 (JST)
-To: tomoyo-users-en@lists.osdn.me
-References: <fe147cd0-ae44-852d-b336-0126e4a44913@I-love.SAKURA.ne.jp>
-From: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
-Message-ID: <aa28cb5f-e8f6-e5ea-60b0-20402fcf3971@i-love.sakura.ne.jp>
-Date: Tue, 7 May 2019 19:57:33 +0900
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ for <tomoyo-users-en@lists.osdn.me>; Wed,  5 Jun 2019 20:47:11 +0900 (JST)
+X-Virus-Scanned: clamav-milter 0.101.2 at ige-mx-01
+Received: from IGE-EXC-02.igefa.zentrale (10.64.1.100) by
+ IGE-EXC-02.igefa.zentrale (10.64.1.100) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 5 Jun 2019 13:47:07 +0200
+Received: from IGE-EXC-02.igefa.zentrale ([::1]) by IGE-EXC-02.igefa.zentrale
+ ([fe80::4996:7f83:c932:544e%16]) with mapi id 15.00.1395.000;
+ Wed, 5 Jun 2019 13:47:07 +0200
+From: "Pannbacker, Ole" <Ole.Pannbacker@igefa.de>
+To: "tomoyo-users-en@lists.osdn.me" <tomoyo-users-en@lists.osdn.me>
+Thread-Topic: Set profile in a child process
+Thread-Index: AQHVG5A2uXKvhrSU3EuxoF0Vu6XqvaaM8XFA
+Date: Wed, 5 Jun 2019 11:47:06 +0000
+Message-ID: <1559735226372.94278@igefa.de>
+References: <188bc3bc420c4e11a9ea148077c370a9@IGE-EXC-02.igefa.zentrale>
+In-Reply-To: <188bc3bc420c4e11a9ea148077c370a9@IGE-EXC-02.igefa.zentrale>
+Accept-Language: de-DE, en-US
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.64.1.56]
+x-ci-mailpolicy-key: 2acbd59cc89831a8bb716212a729d546;
+ 1b43bd61-1e49-445a-80ab-62232dd4ddb0; IGE-EXC-02
 MIME-Version: 1.0
-In-Reply-To: <fe147cd0-ae44-852d-b336-0126e4a44913@I-love.SAKURA.ne.jp>
-Content-Language: en-US
 X-Virus-Status: No
 X-Virus-Checker-Version: clamassassin 1.2.4 with clamdscan / ClamAV
- 0.100.3/25442/Tue May 7 17:01:24 2019
-Subject: [tomoyo-users-en 706] Re: Harbinger of a shift in Linux Security
- Modules
+ 0.100.3/25471/Wed Jun 5 17:12:21 2019
+Subject: [tomoyo-users-en   707] Set profile in a child process
 X-BeenThere: tomoyo-users-en@lists.osdn.me
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,37 +54,91 @@ List-Help: <mailto:tomoyo-users-en-request@lists.osdn.me?subject=help>
 List-Subscribe: <https://lists.osdn.me/mailman/listinfo/tomoyo-users-en>,
  <mailto:tomoyo-users-en-request@lists.osdn.me?subject=subscribe>
 Reply-To: tomoyo-users-en@lists.osdn.me
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7378645488317425606=="
 Errors-To: tomoyo-users-en-bounces@lists.osdn.me
 Sender: "tomoyo-users-en" <tomoyo-users-en-bounces@lists.osdn.me>
 
-SGVsbG8uCgpTaW5jZSBMaW51eCA1LjEgd2FzIHJlbGVhc2VkLCBJIHJlZnJlc2hlZCB0aGUgdGFy
-YmFsbHMuClRoZXJlIGlzIG5vIGNoYW5nZSBleGNlcHQgc3VwcG9ydGluZyB0aGUgbGF0ZXN0IGtl
-cm5lbHMuCgogIGNjcy1wYXRjaC0xLjguNS0yMDE5MDUwNi50YXIuZ3ogICAgICAgICAgIE1ENTph
-YWFhYWRkNWE3MzcxMDVmZjNhNDdhY2VjNTg4MWJhNgogIGNhaXRzaXRoLXBhdGNoLTAuMi0yMDE5
-MDUwNi50YXIuZ3ogICAgICAgIE1ENTo4ODg4MmQ4N2JkMmQyYmMxMmVjMWZjNjg3ZGIzMTdlYQoK
-SW4gTGludXggNS4xLCBUT01PWU8gMi54IGJlY2FtZSBUT01PWU8gMi42ICggaHR0cHM6Ly90b21v
-eW8ub3Nkbi5qcC8yLjYvICkuCkluIExpbnV4IDUuMiwgVE9NT1lPIDIuNiB3aWxsIGdldCB0aGUg
-Zm9sbG93aW5nIGNoYW5nZXMuCgooMSkgVG8gc29sdmUgYSBwcm9ibGVtIHRoYXQgaXQgaXMgaW5j
-b252ZW5pZW50IGZvciBwb2xpY3kgZGV2ZWxvcG1lbnQgdGhhdAogICAgZmlsZXN5c3RlbXMgd2hp
-Y2ggZG8gbm90IHN1cHBvcnQgcmVuYW1lIG9wZXJhdGlvbiAoZS5nLiBzcXVhc2hmcykgZG8gbm90
-CiAgICBnZW5lcmF0ZSBhYnNvbHV0ZSBwYXRobmFtZXMKICAgICggaHR0cDovL2xpc3RzLm9zZG4u
-bWUvbWFpbG1hbi9hcmNoaXZlcy90b21veW8tdXNlcnMtZW4vMjAxNy1KdWx5LzAwMDY4NS5odG1s
-ICksCiAgICB0aGUgcGF0aG5hbWUgY2FsY3VsYXRpb24gbG9naWMgaXMgbW9kaWZpZWQgdG8gZ2Vu
-ZXJhdGUgYWJzb2x1dGUgcGF0aG5hbWVzCiAgICBvbiBmaWxlc3lzdGVtcyB3aGljaCBkbyBub3Qg
-c3VwcG9ydCByZW5hbWUgb3BlcmF0aW9uIGJ1dCByZXF1aXJlIGEgYmxvY2sKICAgIGRldmljZSB1
-cG9uIG1vdW50IG9wZXJhdGlvbi4gU2luY2UgbWFqb3JpdHkgb2YgdXNlcnMgYXJlIHVzaW5nIGZp
-bGVzeXN0ZW1zCiAgICB3aGljaCBzdXBwb3J0IHJlbmFtZSBvcGVyYXRpb24sIHRoaXMgY2hhbmdl
-IHdvdWxkIGJvdGhlciBub2JvZHkuIEFsc28sIEknbQogICAgdGhpbmtpbmcgdG8gYmFja3BvcnQg
-dG8gVE9NT1lPIDEuOCAvIEFLQVJJIC8gQ2FpdFNpdGggYWZ0ZXIgY29uZmlybWluZyB0aGF0CiAg
-ICB0aGlzIGNoYW5nZSBoYXMgbm8gcHJvYmxlbSB3aXRoIFRPTU9ZTyAyLjYuCgooMikgVG8gYmUg
-YWJsZSB0byBjb3ZlciBtb3JlIGNvZGUgYnkgZnV6emluZyB0ZXN0cyBieSBzeXpib3QsIGEga2Vy
-bmVsIGNvbmZpZwogICAgb3B0aW9uIENPTkZJR19TRUNVUklUWV9UT01PWU9fSU5TRUNVUkVfQlVJ
-TFRJTl9TRVRUSU5HIHdoaWNoIHNob3VsZCBiZQogICAgZW5hYmxlZCBvbmx5IHdoZW4gYnVpbGRp
-bmcga2VybmVscyBmb3IgZnV6emluZyB0ZXN0cyBpcyBhZGRlZC4gUGxlYXNlIGJlCiAgICBjYXJl
-ZnVsIG5vdCB0byBlbmFibGUgYnkgZXJyb3Igd2hlbiBidWlsZGluZyBub3JtYWwga2VybmVscy4K
-ClBsZWFzZSBsZXQgbWUga25vdyBpZiB5b3UgZm91bmQgYW55IHByb2JsZW1zLgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KdG9tb3lvLXVzZXJzLWVuIG1h
-aWxpbmcgbGlzdAp0b21veW8tdXNlcnMtZW5AbGlzdHMub3Nkbi5tZQpodHRwczovL2xpc3RzLm9z
-ZG4ubWUvbWFpbG1hbi9saXN0aW5mby90b21veW8tdXNlcnMtZW4K
+--===============7378645488317425606==
+Content-Language: de-DE
+Content-Type: multipart/alternative;
+	boundary="_000_155973522637294278igefade_"
+
+--_000_155973522637294278igefade_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+I recently started using TOMOYO and tried to set sshd to learning mode, how=
+ever the child processes stayed on mode 0.
+
+
+5: 1 +- sshd (4093) <kernel> /usr/sbin/sshd
+6: 0 +- bash (4101) <kernel> /usr/sbin/sshd /bin/bash
+7: 0 +- tomoyo-editpoli (4125) <kernel> /usr/sbin/sshd /bin/bash /usr/sbin/=
+tomoyo-editpolicy
+8: 1 +- sshd (4171) <kernel> /usr/sbin/sshd
+9: 0 +- bash (4176) <kernel> /usr/sbin/sshd /bin/bash
+
+
+Kind regards
+
+Ole Pannbacker
+
+--_000_155973522637294278igefade_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!--P{margin-top:0;margin-b=
+ottom:0;} p=0A=
+	{margin-top:0;=0A=
+	margin-bottom:0}--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<div dir=3D"ltr" style=3D"font-size:12pt; color:#000000; background-color:#=
+FFFFFF; font-family:Calibri,Arial,Helvetica,sans-serif">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font style=3D"font-size:11pt" face=
+=3D"Calibri, sans-serif" color=3D"#000000"></font>&nbsp;
+</div>
+<div>
+<p>I recently started using TOMOYO and tried to set sshd to learning mode, =
+however the child processes stayed on mode 0.<br>
+<br>
+<br>
+5: 1 &#43;- sshd (4093) &lt;kernel&gt; /usr/sbin/sshd<br>
+6: 0 &#43;- bash (4101) &lt;kernel&gt; /usr/sbin/sshd /bin/bash<br>
+7: 0 &#43;- tomoyo-editpoli (4125) &lt;kernel&gt; /usr/sbin/sshd /bin/bash =
+/usr/sbin/tomoyo-editpolicy<br>
+8: 1 &#43;- sshd (4171) &lt;kernel&gt; /usr/sbin/sshd<br>
+9: 0 &#43;- bash (4176) &lt;kernel&gt; /usr/sbin/sshd /bin/bash<br>
+<br>
+<br>
+Kind regards<br>
+<br>
+Ole Pannbacker<br>
+</p>
+</div>
+</div>
+</body>
+</html>
+
+--_000_155973522637294278igefade_--
+
+
+--===============7378645488317425606==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KdG9tb3lvLXVz
+ZXJzLWVuIG1haWxpbmcgbGlzdAp0b21veW8tdXNlcnMtZW5AbGlzdHMub3Nkbi5tZQpodHRwczov
+L2xpc3RzLm9zZG4ubWUvbWFpbG1hbi9saXN0aW5mby90b21veW8tdXNlcnMtZW4K
+
+--===============7378645488317425606==--
+

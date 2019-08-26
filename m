@@ -2,38 +2,53 @@ Return-Path: <tomoyo-users-en-bounces@lists.osdn.me>
 X-Original-To: lists+tomoyo-users-en@lfdr.de
 Delivered-To: lists+tomoyo-users-en@lfdr.de
 Received: from lists.osdn.me (gw0.osdn.jp [202.221.179.250])
-	by mail.lfdr.de (Postfix) with ESMTP id 49C7895FB0
-	for <lists+tomoyo-users-en@lfdr.de>; Tue, 20 Aug 2019 15:16:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTP id C0F119CBE2
+	for <lists+tomoyo-users-en@lfdr.de>; Mon, 26 Aug 2019 10:49:59 +0200 (CEST)
 X-Original-To: tomoyo-users-en@lists.osdn.me
 Delivered-To: lists-post+tomoyo-users-en@lists.osdn.me
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
  sf-lists.priv.osdn.jp
-X-Spam-Level: 
-X-Spam-Status: No, score=0.0 required=7.0 tests=none autolearn=disabled
- version=3.4.2
-Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
- by sf-lists.priv.osdn.jp (Postfix) with ESMTP
- for <tomoyo-users-en@lists.osdn.me>; Tue, 20 Aug 2019 22:16:01 +0900 (JST)
-Received: from fsav402.sakura.ne.jp (fsav402.sakura.ne.jp [133.242.250.101])
- by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id x7KDG088074879
- for <tomoyo-users-en@lists.osdn.me>; Tue, 20 Aug 2019 22:16:00 +0900 (JST)
- (envelope-from penguin-kernel@i-love.sakura.ne.jp)
-Received: from www262.sakura.ne.jp (202.181.97.72)
- by fsav402.sakura.ne.jp (F-Secure/fsigk_smtp/530/fsav402.sakura.ne.jp);
- Tue, 20 Aug 2019 22:16:00 +0900 (JST)
-To: tomoyo-users-en@lists.osdn.me
-From: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
-Message-ID: <a0e61e20-dbf3-82de-dbba-89d61092bb52@i-love.sakura.ne.jp>
-Date: Tue, 20 Aug 2019 22:15:56 +0900
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+X-Spam-Level: *
+X-Spam-Status: No, score=1.2 required=7.0 tests=FREEMAIL_FROM,HTML_MESSAGE,
+ T_DKIM_INVALID autolearn=disabled version=3.4.2
+Received: from mail-vs1-f43.google.com (mail-vs1-f43.google.com
+ [209.85.217.43]) by sf-lists.priv.osdn.jp (Postfix) with ESMTP
+ for <tomoyo-users-en@lists.osdn.me>; Mon, 26 Aug 2019 17:49:50 +0900 (JST)
+Received: by mail-vs1-f43.google.com with SMTP id x20so10193145vsx.13
+ for <tomoyo-users-en@lists.osdn.me>; Mon, 26 Aug 2019 01:49:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=XuQgph5PhCEW1KzwX4NWDioRWsJtENqihvHvCzbuimc=;
+ b=lOnkR0abd6Cy54yGBJYZRNq+6a0P/OFGqAAzVPuxn7N1Bpvh9e97OE7yK2svtqzNU0
+ kSeC3KuAkMGiRtaUxwdBMonKMqcrfkRNKYCJ7ePMa0LAeaTu1E60q535TQWzA8ilfw/P
+ vGe3cq8gMhs8oN+nS1wSU59/X4McGNMXm5+YwV235osPaZ4902MXFa+wvXspL0BoXbjG
+ Im6H4TGK3bzOT5vw8nhjKAviUFLCyXHsIGE0CAzZSa4jtlVpl4ECQ0tByvItQVMQWtwH
+ 2zKl1ql2HywVkcMxoHZqcbHOgJIeZk6rQbNcTQB0i0+QUX+WclWfC6pHi7dG5qToubLU
+ 1jvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=XuQgph5PhCEW1KzwX4NWDioRWsJtENqihvHvCzbuimc=;
+ b=IGQ+JyOAatwOGuaOL2VmH8iBwUQBlD7LayC03Mo2k04Posj7YYUSNEYKddDXJ3SvcB
+ U+eqKjefa1v1ecniSDghqFO1PwvS3LV/YxBv+ERJZXVs/lJiQYLeJCsI/RTPSgwRKDM2
+ ZwEfgDwrZzjbkXKwgBhaWOzF7dT7M47/p6B/kx6QLu90637J66f8gTlgiYVFb1loml2n
+ vh1oWqhIGiPlcZV+g5Ny0XA0EHOfHQ8xn9Yq3cdsJqNdS3BKlK9GJcJ4sziUHZgYTqI3
+ Nj0SrcWHwUjH2Q/oZIHptXJ2XJPzLlS9QN/gYMYwSbmz6YI6+kMY1G93KBWz5JCJu2CM
+ vJaA==
+X-Gm-Message-State: APjAAAWqbj12FelfAHOruR1FqRsnNRaPr/jzvyFcUGvyUElWOcUNGbfd
+ cS3hYcnzARre9v9sGZhY4ZnB7K6lyR9cDidqxfTO6PDe3DI=
+X-Google-Smtp-Source: APXvYqwUoXSxFp4fdb3HLt5+ul7hNQJAewLL1N4oFCMjaIRsEAOypG2V2xvxx5HJudaJ4cSL9KGDmoUE+uncgF3P2x0=
+X-Received: by 2002:a67:d38c:: with SMTP id b12mr10088461vsj.154.1566809389405; 
+ Mon, 26 Aug 2019 01:49:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Language: en-US
+From: Luigi Tarantino <l.tarantino098@gmail.com>
+Date: Mon, 26 Aug 2019 10:49:38 +0200
+Message-ID: <CAH8kxZjt+RGONmTS9_nWwHbL4jhfV_9JWpAntZ2AX4JkfuhXvg@mail.gmail.com>
+To: tomoyo-users-en@lists.osdn.me
 X-Virus-Status: No
 X-Virus-Checker-Version: clamassassin 1.2.4 with clamdscan / ClamAV
- 0.100.3/25547/Tue Aug 20 17:27:49 2019
-Subject: [tomoyo-users-en 712] TOMOYO Linux 1.8.6 / AKARI 1.0.39 / CaitSith
- 0.2.4 released.
+ 0.100.3/25552/Sun Aug 25 17:24:59 2019
+Subject: [tomoyo-users-en   713] tomoyo with docker
 X-BeenThere: tomoyo-users-en@lists.osdn.me
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -46,26 +61,57 @@ List-Help: <mailto:tomoyo-users-en-request@lists.osdn.me?subject=help>
 List-Subscribe: <https://lists.osdn.me/mailman/listinfo/tomoyo-users-en>,
  <mailto:tomoyo-users-en-request@lists.osdn.me?subject=subscribe>
 Reply-To: tomoyo-users-en@lists.osdn.me
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8847685179965414559=="
 Errors-To: tomoyo-users-en-bounces@lists.osdn.me
 Sender: "tomoyo-users-en" <tomoyo-users-en-bounces@lists.osdn.me>
 
-SGVsbG8uCgpUbyBhZGRyZXNzIHBhdGhuYW1lIGNhbGN1bGF0aW9uIHByb2JsZW0gb24gcmVhZC1v
-bmx5IGZpbGVzeXN0ZW1zCiggaHR0cHM6Ly9vc2RuLm5ldC9wcm9qZWN0cy90b21veW8vbGlzdHMv
-YXJjaGl2ZS91c2Vycy1lbi8yMDE3LUp1bHkvMDAwNjg0Lmh0bWwgKSwKSSBjaGFuZ2VkIHBhdGhu
-YW1lIGNhbGN1bGF0aW9uIHJ1bGUgaW4gVE9NT1lPIDIuNiAvIExpbnV4IDUuMgooIGh0dHBzOi8v
-Z2l0Lmtlcm5lbC5vcmcvbGludXMvMjdkZjRiNGExYjVmZTJiZWY1NGViYzQ5ZDY0YmY1YjM5MTI1
-ZjI2YSApLCBhbmQKSSBiYWNrcG9ydGVkIHRoYXQgY2hhbmdlIHRvIFRPTU9ZTyAxLjggLyBBS0FS
-SSAvIENhaXRTaXRoIChhbG9uZyB3aXRoIG90aGVyIGJ1ZwpmaXhlcykuCgpTaW5jZSBwYXRobmFt
-ZSBpbiB0aGUgcG9saWN5IGZpbGVzIG5lZWQgdG8gYmUgdXBkYXRlZCBvbiBlbnZpcm9ubWVudHMg
-d2hpY2ggd2lsbApiZSBhZmZlY3RlZCBieSB0aGF0IGNoYW5nZSwgSSBidW1wZWQgdGhlIHZlcnNp
-b24gdG8gMS44LjYgcmF0aGVyIHRoYW4gMS44LjVwMy4KCiAgY2NzLXBhdGNoLTEuOC42LTIwMTkw
-ODIwLnRhci5neiAgICAgICAgICAgTUQ1OjExMTEzMDRiNDBmN2ZkMzcyNmJlMDgxNzY4ZDllMDBi
-CiAgYWthcmktMS4wLjM5LTIwMTkwODIwLnRhci5neiAgICAgICAgICAgICAgTUQ1OjU1NTVmMGQy
-NWFlNjAyODA3ZWJjOTQzZWY2OGUzMjA4CiAgY2FpdHNpdGgtcGF0Y2gtMC4yLTIwMTkwODIwLnRh
-ci5neiAgICAgICAgTUQ1Ojc3NzcwNzk0MmFkZDI5NDE4ZTVkODNlNDBhY2M2ZjA0CgpQbGVhc2Ug
-bGV0IG1lIGtub3cgaWYgeW91IGZvdW5kIGFueSBwcm9ibGVtcy4KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCnRvbW95by11c2Vycy1lbiBtYWlsaW5nIGxp
-c3QKdG9tb3lvLXVzZXJzLWVuQGxpc3RzLm9zZG4ubWUKaHR0cHM6Ly9saXN0cy5vc2RuLm1lL21h
-aWxtYW4vbGlzdGluZm8vdG9tb3lvLXVzZXJzLWVuCg==
+--===============8847685179965414559==
+Content-Type: multipart/alternative; boundary="000000000000161c010591013daa"
+
+--000000000000161c010591013daa
+Content-Type: text/plain; charset="UTF-8"
+
+Hello,
+  Can tomoyo play nicely with container technologies like docker?
+
+In other words is it possible to deploy a tomoyo policy that only applies
+to a specific container?
+This would mean that a process in the container may for example issue an
+open("/etc/x.conf", ...), in its own mount namespace, and I want to allow
+that open only in that container, but not for instance in the host (where
+"/etc/x.conf" is a different file, if it exists), or in other containers
+running on the same host.
+
+Thanks,
+  Vincenzo
+
+--000000000000161c010591013daa
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hello,</div><div>=C2=A0 Can tomoyo play nicely with c=
+ontainer technologies like docker?</div><div><br></div><div>In other words =
+is it possible to deploy a tomoyo policy that only applies to a specific co=
+ntainer?<br></div><div>This would mean that a process in the container may =
+for example issue an open(&quot;/etc/x.conf&quot;, ...), in its own mount n=
+amespace, and I want to allow that open only in that container, but not for=
+ instance in the host (where &quot;/etc/x.conf&quot; is a different file, i=
+f it exists), or in other containers running on the same host.</div><div><b=
+r></div><div>Thanks,</div><div>=C2=A0 Vincenzo<br></div><div><br></div><div=
+><br></div></div>
+
+--000000000000161c010591013daa--
+
+
+--===============8847685179965414559==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KdG9tb3lvLXVz
+ZXJzLWVuIG1haWxpbmcgbGlzdAp0b21veW8tdXNlcnMtZW5AbGlzdHMub3Nkbi5tZQpodHRwczov
+L2xpc3RzLm9zZG4ubWUvbWFpbG1hbi9saXN0aW5mby90b21veW8tdXNlcnMtZW4K
+
+--===============8847685179965414559==--
+

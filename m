@@ -2,60 +2,40 @@ Return-Path: <tomoyo-users-en-bounces@lists.osdn.me>
 X-Original-To: lists+tomoyo-users-en@lfdr.de
 Delivered-To: lists+tomoyo-users-en@lfdr.de
 Received: from lists.osdn.me (gw0.osdn.jp [202.221.179.250])
-	by mail.lfdr.de (Postfix) with ESMTP id B842116A628
-	for <lists+tomoyo-users-en@lfdr.de>; Mon, 24 Feb 2020 13:31:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTP id 3466A17453D
+	for <lists+tomoyo-users-en@lfdr.de>; Sat, 29 Feb 2020 06:30:57 +0100 (CET)
 X-Original-To: tomoyo-users-en@lists.osdn.me
 Delivered-To: lists-post+tomoyo-users-en@lists.osdn.me
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
  sf-lists.priv.osdn.jp
-X-Spam-Level: 
-X-Spam-Status: No, score=0.0 required=7.0 tests=FREEMAIL_FROM,T_DKIM_INVALID
+X-Spam-Level: *
+X-Spam-Status: No, score=1.0 required=7.0 tests=ENCODING_8BIT
  autolearn=disabled version=3.4.2
-Received: from mail-lf1-f54.google.com (mail-lf1-f54.google.com
- [209.85.167.54]) by sf-lists.priv.osdn.jp (Postfix) with ESMTP
- for <tomoyo-users-en@lists.osdn.me>; Mon, 24 Feb 2020 06:27:17 +0900 (JST)
-Received: by mail-lf1-f54.google.com with SMTP id u2so2676527lfk.13
- for <tomoyo-users-en@lists.osdn.me>; Sun, 23 Feb 2020 13:27:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=zzpzyOmboPBKVgC684Ju78LIa+CiT+tlzFAzUOS6rEo=;
- b=QXxs2ajzD23iBEtnGSXUWHMW1jVJuQKqrWNzaGUA514/OUwN+JGtL+pUzJhCJ2bHTE
- pVbAHwxonJKXlQCqhJRwEZkXRNbSyu2/vMMN0/ypNklILCkEkTcWnVSNn634kXD2K1Rj
- Acf7cSdqYiQxWtsjRT5PW6eT17Azb2ndcxIyjZUNv6OT45ndMiArrYeJzeIyHiqpQL/2
- a6ExGH4s4H/yVoPmeOITBkizilOxGIUm0jQ1bddmEIQdnuC0OO7GIyR7aXbCmhni4DUX
- f1GEXHyFj3K8YAuO+qSDQx1KyiLlbTF63il2BYCHt3v66GWRSFLMJokO9CG5EzxRM/b5
- lHbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=zzpzyOmboPBKVgC684Ju78LIa+CiT+tlzFAzUOS6rEo=;
- b=JBGK22Z5IfnQkZTCyIyMlkYWhGs4w7CQpA9y8kNGTy8KARXLeD0iC9yuxihRdQx7+U
- xhqmTpfQjafRButcefq7kWqBvLILZyZeERstpt+DcRWb1KEYv7KRZd4mBWZkvka/iQ+f
- WesbMXJTjQ2XhNEfJ9rTUx/cc6MAN7v+w5YyKHLPOe3kKDxw2/oNyeHGKzR8QPSIEKOX
- 5fz0ds9LUBBR570zEuEDbl7GQ/VvMyKpXUz0nIDdUxTTidYpcyHh+g9s4WXmYEt2QGa/
- AG43vOzfElw7XF+51EBGC6kHBdiryDeTAD+J09ZkJk7xvm0Tvs7erJCDGW2JzCk7KlaM
- M5Ig==
-X-Gm-Message-State: APjAAAUae2mWVe33t74fP2ilAh+O3sxxypVtBjQQKB7PlXSSKSYM0GeZ
- tDd/m/AhmvFKoPgsyYO4BW3ZAFmv
-X-Google-Smtp-Source: APXvYqwLvkjVW6fPITcIcE9MDqPhx7juz5Gu9ls1CgegeZUIoWcKBFm/3zGUNgVZc0h0vYYRKv2mbA==
-X-Received: by 2002:a19:2396:: with SMTP id
- j144mr11586267lfj.113.1582493235114; 
- Sun, 23 Feb 2020 13:27:15 -0800 (PST)
-To: tomoyo-users-en@lists.osdn.me
-From: Topi Miettinen <toiwoton@gmail.com>
-Message-ID: <4fa32b94-d9a2-f49d-fa37-08ad3f7a9f53@gmail.com>
-Date: Sun, 23 Feb 2020 23:27:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
+ by sf-lists.priv.osdn.jp (Postfix) with ESMTP
+ for <tomoyo-users-en@lists.osdn.me>; Sat, 29 Feb 2020 14:30:54 +0900 (JST)
+Received: from fsav106.sakura.ne.jp (fsav106.sakura.ne.jp [27.133.134.233])
+ by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 01T5Uh4j051706;
+ Sat, 29 Feb 2020 14:30:43 +0900 (JST)
+ (envelope-from penguin-kernel@i-love.sakura.ne.jp)
+Received: from www262.sakura.ne.jp (202.181.97.72)
+ by fsav106.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav106.sakura.ne.jp);
+ Sat, 29 Feb 2020 14:30:43 +0900 (JST)
+To: Topi Miettinen <toiwoton@gmail.com>
+References: <4fa32b94-d9a2-f49d-fa37-08ad3f7a9f53@gmail.com>
+From: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
+Message-ID: <df81e765-cd82-2b5a-af17-4a1212848592@i-love.sakura.ne.jp>
+Date: Sat, 29 Feb 2020 14:30:39 +0900
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <4fa32b94-d9a2-f49d-fa37-08ad3f7a9f53@gmail.com>
 Content-Language: en-US
 X-Virus-Status: No
 X-Virus-Checker-Version: clamassassin 1.2.4 with clamdscan / ClamAV
- 0.102.1/25732/Sun Feb 23 23:08:15 2020
-X-Mailman-Approved-At: Mon, 24 Feb 2020 21:31:47 +0900
-Subject: [tomoyo-users-en 720] [PATCH] Add systemd service for tomoyo-auditd
+ 0.102.2/25736/Fri Feb 28 21:05:55 2020
+Subject: [tomoyo-users-en 721] Re: [PATCH] Add systemd service for
+ tomoyo-auditd
 X-BeenThere: tomoyo-users-en@lists.osdn.me
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,60 +48,41 @@ List-Help: <mailto:tomoyo-users-en-request@lists.osdn.me?subject=help>
 List-Subscribe: <https://lists.osdn.me/mailman/listinfo/tomoyo-users-en>,
  <mailto:tomoyo-users-en-request@lists.osdn.me?subject=subscribe>
 Reply-To: tomoyo-users-en@lists.osdn.me
+Cc: tomoyo-users-en@lists.osdn.me
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: tomoyo-users-en-bounces@lists.osdn.me
 Sender: "tomoyo-users-en" <tomoyo-users-en-bounces@lists.osdn.me>
 
-RW5hYmxlIG1hbnkgaGFyZGVuaW5nIGZlYXR1cmVzIHByb3ZpZGVkIGJ5IHN5c3RlbWQgZm9yIHRv
-bW95by1hdWRpdGQuCgpTaWduZWQtb2ZmLWJ5OiBUb3BpIE1pZXR0aW5lbiA8dG9pd290b25AZ21h
-aWwuY29tPgotLS0KICBJbmNsdWRlLm1ha2UgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAxICsKICBNYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
-ICAxICsKICB1c3JfbGliX3N5c3RlbWRfc3lzdGVtL01ha2VmaWxlICAgICAgICAgICAgICB8ICA3
-ICsrKysKICB1c3JfbGliX3N5c3RlbWRfc3lzdGVtL3RvbW95by1hdWRpdGQuc2VydmljZSB8IDM5
-ICsrKysrKysrKysrKysrKysrKysrCiAgNCBmaWxlcyBjaGFuZ2VkLCA0OCBpbnNlcnRpb25zKCsp
-CiAgY3JlYXRlIG1vZGUgMTAwNjQ0IHVzcl9saWJfc3lzdGVtZF9zeXN0ZW0vTWFrZWZpbGUKICBj
-cmVhdGUgbW9kZSAxMDA2NDQgdXNyX2xpYl9zeXN0ZW1kX3N5c3RlbS90b21veW8tYXVkaXRkLnNl
-cnZpY2UKCmRpZmYgLS1naXQgYS9JbmNsdWRlLm1ha2UgYi9JbmNsdWRlLm1ha2UKaW5kZXggZmYw
-ODQ1MS4uZGY4ZWZhOSAxMDA2NDQKLS0tIGEvSW5jbHVkZS5tYWtlCisrKyBiL0luY2x1ZGUubWFr
-ZQpAQCAtMiw2ICsyLDcgQEAgSU5TVEFMTCAgICAgICAgIDo9IGluc3RhbGwKICBTQklORElSICAg
-ICAgICAgOj0gL3NiaW4KICBVU1JTQklORElSICAgICAgOj0gL3Vzci9zYmluCiAgVVNSTElCRElS
-ICAgICAgIDo9IC91c3IvbGliCitTRVJWSUNFRElSICAgICAgOj0gL3Vzci9saWIvc3lzdGVtZC9z
-eXN0ZW0KICBNQU44ICAgICAgICAgICAgOj0gL3Vzci9zaGFyZS9tYW4vbWFuOAogIGlmbmRlZiBD
-RkxBR1MKICBDRkxBR1MgICAgICAgICAgOj0gLVdhbGwgLU8yCmRpZmYgLS1naXQgYS9NYWtlZmls
-ZSBiL01ha2VmaWxlCmluZGV4IGU0MTU4MjMuLjYwNmNiZmMgMTAwNjQ0Ci0tLSBhL01ha2VmaWxl
-CisrKyBiL01ha2VmaWxlCkBAIC04LDYgKzgsNyBAQCBpbnN0YWxsOiBhbGwKICAgICAgICAgJChN
-QUtFKSAtQyB1c3Jfc2JpbiBpbnN0YWxsCiAgICAgICAgICQoTUFLRSkgLUMgdXNyX2xpYl90b21v
-eW8gaW5zdGFsbAogICAgICAgICAkKE1BS0UpIC1DIHVzcl9zaGFyZV9tYW4gaW5zdGFsbAorICAg
-ICAgICQoTUFLRSkgLUMgdXNyX2xpYl9zeXN0ZW1kX3N5c3RlbSBpbnN0YWxsCgogIGNsZWFuOgog
-ICMjCmRpZmYgLS1naXQgYS91c3JfbGliX3N5c3RlbWRfc3lzdGVtL01ha2VmaWxlIApiL3Vzcl9s
-aWJfc3lzdGVtZF9zeXN0ZW0vTWFrZWZpbGUKbmV3IGZpbGUgbW9kZSAxMDA2NDQKaW5kZXggMDAw
-MDAwMC4uZTM3NTJhNAotLS0gL2Rldi9udWxsCisrKyBiL3Vzcl9saWJfc3lzdGVtZF9zeXN0ZW0v
-TWFrZWZpbGUKQEAgLTAsMCArMSw3IEBACitpbmNsdWRlIC4uL0luY2x1ZGUubWFrZQorCitpbnN0
-YWxsOgorICAgICAgIG1rZGlyIC1wIC1tIDA3NTUgJChJTlNUQUxMRElSKSQoU0VSVklDRURJUikK
-KyAgICAgICAkKElOU1RBTEwpIC1tIDA2NDQgKi5zZXJ2aWNlICQoSU5TVEFMTERJUikkKFNFUlZJ
-Q0VESVIpCisKKy5QSE9OWTogaW5zdGFsbApkaWZmIC0tZ2l0IGEvdXNyX2xpYl9zeXN0ZW1kX3N5
-c3RlbS90b21veW8tYXVkaXRkLnNlcnZpY2UgCmIvdXNyX2xpYl9zeXN0ZW1kX3N5c3RlbS90b21v
-eW8tYXVkaXRkLnNlcnZpY2UKbmV3IGZpbGUgbW9kZSAxMDA2NDQKaW5kZXggMDAwMDAwMC4uYTJk
-MmQ1NQotLS0gL2Rldi9udWxsCisrKyBiL3Vzcl9saWJfc3lzdGVtZF9zeXN0ZW0vdG9tb3lvLWF1
-ZGl0ZC5zZXJ2aWNlCkBAIC0wLDAgKzEsMzkgQEAKK1tVbml0XQorQmVmb3JlPXN5c2luaXQudGFy
-Z2V0IHNodXRkb3duLnRhcmdldAorQ29uZGl0aW9uU2VjdXJpdHk9dG9tb3lvCitEZWZhdWx0RGVw
-ZW5kZW5jaWVzPW5vCitSZXF1aXJlc01vdW50c0Zvcj0vdmFyIC9zeXMKKworW1NlcnZpY2VdCitD
-YXBhYmlsaXR5Qm91bmRpbmdTZXQ9CitEZXZpY2VBbGxvdz0vZGV2L251bGwKK0RldmljZVBvbGlj
-eT1zdHJpY3QKK0V4ZWNTdGFydD0vdXNyL3NiaW4vdG9tb3lvLWF1ZGl0ZAorSVBBZGRyZXNzRGVu
-eT1hbnkKK0xvY2tQZXJzb25hbGl0eT15ZXMKK01lbW9yeURlbnlXcml0ZUV4ZWN1dGU9eWVzCitO
-b05ld1ByaXZpbGVnZXM9eWVzCitQcml2YXRlRGV2aWNlcz15ZXMKK1ByaXZhdGVOZXR3b3JrPXll
-cworUHJpdmF0ZVRtcD15ZXMKK1ByaXZhdGVVc2Vycz15ZXMKK1Byb3RlY3RDb250cm9sR3JvdXBz
-PXllcworUHJvdGVjdEhvbWU9eWVzCitQcm90ZWN0SG9zdG5hbWU9eWVzCitQcm90ZWN0S2VybmVs
-TG9ncz15ZXMKK1Byb3RlY3RLZXJuZWxNb2R1bGVzPXllcworUHJvdGVjdEtlcm5lbFR1bmFibGVz
-PXllcworUHJvdGVjdFN5c3RlbT1zdHJpY3QKK1Jlc3RhcnQ9YWx3YXlzCitSZXN0cmljdEFkZHJl
-c3NGYW1pbGllcz0KK1Jlc3RyaWN0TmFtZXNwYWNlcz15ZXMKK1Jlc3RyaWN0UmVhbHRpbWU9eWVz
-CitSZXN0cmljdFNVSURTR0lEPXllcworU3lzdGVtQ2FsbEFyY2hpdGVjdHVyZXM9bmF0aXZlCitT
-eXN0ZW1DYWxsRmlsdGVyPUBzeXN0ZW0tc2VydmljZQorU3lzdGVtQ2FsbEZpbHRlcj1+QGNob3du
-IEBjbG9jayBAY3B1LWVtdWxhdGlvbiBAZGVidWcgQGlwYyBAbW9kdWxlIApAbW91bnQgQG9ic29s
-ZXRlIEBwcml2aWxlZ2VkIEByYXctaW8gQHJlYm9vdCBAcmVzb3VyY2VzIEBzd2FwIAptZW1mZF9j
-cmVhdGUgbWluY29yZSBtbG9jayBtbG9ja2FsbCBwZXJzb25hbGl0eQorVHlwZT1mb3JraW5nCitV
-TWFzaz0wMDc3CisKK1tJbnN0YWxsXQorV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXQKLS0gCjIu
-MjUuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KdG9t
-b3lvLXVzZXJzLWVuIG1haWxpbmcgbGlzdAp0b21veW8tdXNlcnMtZW5AbGlzdHMub3Nkbi5tZQpo
-dHRwczovL2xpc3RzLm9zZG4ubWUvbWFpbG1hbi9saXN0aW5mby90b21veW8tdXNlcnMtZW4K
+SGVsbG8uCgpPbiAyMDIwLzAyLzI0IDY6MjcsIFRvcGkgTWlldHRpbmVuIHdyb3RlOgo+IEVuYWJs
+ZSBtYW55IGhhcmRlbmluZyBmZWF0dXJlcyBwcm92aWRlZCBieSBzeXN0ZW1kIGZvciB0b21veW8t
+YXVkaXRkLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFRvcGkgTWlldHRpbmVuIDx0b2l3b3RvbkBnbWFp
+bC5jb20+Cj4gLS0tCj4gwqBJbmNsdWRlLm1ha2XCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxICsKPiDCoE1ha2VmaWxl
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIHzCoCAxICsKPiDCoHVzcl9saWJfc3lzdGVtZF9zeXN0ZW0vTWFrZWZp
+bGXCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgNyArKysrCj4gwqB1c3JfbGliX3N5c3Rl
+bWRfc3lzdGVtL3RvbW95by1hdWRpdGQuc2VydmljZSB8IDM5ICsrKysrKysrKysrKysrKysrKysr
+Cj4gwqA0IGZpbGVzIGNoYW5nZWQsIDQ4IGluc2VydGlvbnMoKykKPiDCoGNyZWF0ZSBtb2RlIDEw
+MDY0NCB1c3JfbGliX3N5c3RlbWRfc3lzdGVtL01ha2VmaWxlCj4gwqBjcmVhdGUgbW9kZSAxMDA2
+NDQgdXNyX2xpYl9zeXN0ZW1kX3N5c3RlbS90b21veW8tYXVkaXRkLnNlcnZpY2UKClRoYW5rIHlv
+dSBmb3IgYSBwYXRjaCwgYnV0IEkgY2FuJ3QgYXBwbHkgdGhpcyBwYXRjaCBiZWNhdXNlIHRoaXMg
+c2VydmljZSBmaWxlIHJlcXVpcmVzCm1vcmUgcmVjZW50IHN5c3RlbWQgdmVyc2lvbnMuIEkgZ2V0
+IGZvbGxvd2luZyBlcnJvcnMgb24gc3lzdGVtZC0yMTktNjcuZWw3XzcuMy54ODZfNjQ6CgogIFVu
+a25vd24gbHZhbHVlICdJUEFkZHJlc3NEZW55JyBpbiBzZWN0aW9uICdTZXJ2aWNlJwogIFVua25v
+d24gbHZhbHVlICdMb2NrUGVyc29uYWxpdHknIGluIHNlY3Rpb24gJ1NlcnZpY2UnCiAgVW5rbm93
+biBsdmFsdWUgJ01lbW9yeURlbnlXcml0ZUV4ZWN1dGUnIGluIHNlY3Rpb24gJ1NlcnZpY2UnCiAg
+VW5rbm93biBsdmFsdWUgJ1ByaXZhdGVVc2VycycgaW4gc2VjdGlvbiAnU2VydmljZScKICBVbmtu
+b3duIGx2YWx1ZSAnUHJvdGVjdENvbnRyb2xHcm91cHMnIGluIHNlY3Rpb24gJ1NlcnZpY2UnCiAg
+VW5rbm93biBsdmFsdWUgJ1Byb3RlY3RIb3N0bmFtZScgaW4gc2VjdGlvbiAnU2VydmljZScKICBV
+bmtub3duIGx2YWx1ZSAnUHJvdGVjdEtlcm5lbExvZ3MnIGluIHNlY3Rpb24gJ1NlcnZpY2UnCiAg
+VW5rbm93biBsdmFsdWUgJ1Byb3RlY3RLZXJuZWxNb2R1bGVzJyBpbiBzZWN0aW9uICdTZXJ2aWNl
+JwogIFVua25vd24gbHZhbHVlICdQcm90ZWN0S2VybmVsVHVuYWJsZXMnIGluIHNlY3Rpb24gJ1Nl
+cnZpY2UnCiAgRmFpbGVkIHRvIHBhcnNlIHByb3RlY3Qgc3lzdGVtIHZhbHVlLCBpZ25vcmluZzog
+c3RyaWN0CiAgVW5rbm93biBsdmFsdWUgJ1Jlc3RyaWN0TmFtZXNwYWNlcycgaW4gc2VjdGlvbiAn
+U2VydmljZScKICBVbmtub3duIGx2YWx1ZSAnUmVzdHJpY3RSZWFsdGltZScgaW4gc2VjdGlvbiAn
+U2VydmljZScKICBVbmtub3duIGx2YWx1ZSAnUmVzdHJpY3RTVUlEU0dJRCcgaW4gc2VjdGlvbiAn
+U2VydmljZScKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CnRvbW95by11c2Vycy1lbiBtYWlsaW5nIGxpc3QKdG9tb3lvLXVzZXJzLWVuQGxpc3RzLm9zZG4u
+bWUKaHR0cHM6Ly9saXN0cy5vc2RuLm1lL21haWxtYW4vbGlzdGluZm8vdG9tb3lvLXVzZXJzLWVu
+Cg==

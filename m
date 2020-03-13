@@ -2,65 +2,53 @@ Return-Path: <tomoyo-users-en-bounces@lists.osdn.me>
 X-Original-To: lists+tomoyo-users-en@lfdr.de
 Delivered-To: lists+tomoyo-users-en@lfdr.de
 Received: from lists.osdn.me (gw0.osdn.jp [202.221.179.250])
-	by mail.lfdr.de (Postfix) with ESMTP id 81CDD174C24
-	for <lists+tomoyo-users-en@lfdr.de>; Sun,  1 Mar 2020 08:26:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTP id 78E79184CF4
+	for <lists+tomoyo-users-en@lfdr.de>; Fri, 13 Mar 2020 17:50:15 +0100 (CET)
 X-Original-To: tomoyo-users-en@lists.osdn.me
 Delivered-To: lists-post+tomoyo-users-en@lists.osdn.me
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
  sf-lists.priv.osdn.jp
-X-Spam-Level: 
-X-Spam-Status: No, score=0.0 required=7.0 tests=FREEMAIL_FROM,T_DKIM_INVALID
- autolearn=disabled version=3.4.2
-Received: from mail-lf1-f68.google.com (mail-lf1-f68.google.com
- [209.85.167.68]) by sf-lists.priv.osdn.jp (Postfix) with ESMTP
- for <tomoyo-users-en@lists.osdn.me>; Sun,  1 Mar 2020 16:26:05 +0900 (JST)
-Received: by mail-lf1-f68.google.com with SMTP id j11so1987923lfg.4
- for <tomoyo-users-en@lists.osdn.me>; Sat, 29 Feb 2020 23:26:05 -0800 (PST)
+X-Spam-Level: *
+X-Spam-Status: No, score=1.2 required=7.0 tests=FREEMAIL_FROM,HTML_MESSAGE,
+ T_DKIM_INVALID autolearn=disabled version=3.4.2
+Received: from mail-vs1-f50.google.com (mail-vs1-f50.google.com
+ [209.85.217.50]) by sf-lists.priv.osdn.jp (Postfix) with ESMTP
+ for <tomoyo-users-en@lists.osdn.me>; Sat, 14 Mar 2020 01:50:11 +0900 (JST)
+Received: by mail-vs1-f50.google.com with SMTP id k26so6601051vso.5
+ for <tomoyo-users-en@lists.osdn.me>; Fri, 13 Mar 2020 09:50:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language;
- bh=0oCV+us7wjbSJBVGZs/iwHB0X2T8S/8rNyRIdEyyj00=;
- b=a4gXTr7gZaVVvKiBGcbq8QiBJdzxkjakjbQ9Q71eLOonCh9VIoDQvS7wb1o5JtZAws
- b+Lg5aGUxZqipIedo9j50AQzaKUEN3/1gjnbyz5CkUGRPCMk3D6Wo/RFSabMyOxb0wZ+
- oFYwFoade/zmYLb22mYqOQtkT1Akc1o81AoHn1kJdkS2UIyI56aAfnW1n95Q8EdV+TSh
- QGMlvSbUpFWN4sK+UWjxcmh4WMc996fy6oE4oLlUDswk0f89gq7Bw+gsdiyjsFARCYv+
- FzIOTPxYnqLsmS8X1nZyBd4zChIy5ptoB5hOWubSkDv597+lopN1cPk526mih5YC1VYR
- J8ng==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=bBkxLP+znJFrLsc/92CJXicqVgGf3YLZMfYL7WKnH6M=;
+ b=EodPJJY79ygCVITwnT0VU/mUqmqJKuYm24wMhdPW0wcwhrYMqlG6Le2pdDpEgTUc0w
+ x1WvgnAsL3XO6Io8rDn8WibflVQ9V2DtJVCZbn4FHjCOgVq2t8VEHBJXdRs8a8kR7gMM
+ /4kTbXk8OhmPmd5fUCjngSuUcVcrabxQ1glcYwu6oPW940LHEsrstlFDWMF47dNmEkcY
+ O18eAuLa12AmneUPD0ddU1C0wzHF/98+p9gNfeNScgFFKWklWGXySzHvRL1yMX2dQ29S
+ BioAjkeGY2UkwegvGRuxUaaHJAgYjVGd0aAAILnv9xzR4Ajgikx0+WG9XVY9SQobs7+s
+ roTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language;
- bh=0oCV+us7wjbSJBVGZs/iwHB0X2T8S/8rNyRIdEyyj00=;
- b=HWDgQIM1+4t6zlGmm0WGlqEUDXO410Jkl4tRr8DxRUbLrIG7YgYjtP98MNZOlCYxjI
- Gne7brf5oTNv/nPEafxAv9q1wkE+qLV/iC6Syh/r3ksW/OA3CgRltB0G7vBrtq516JhA
- xlVSxHE6J9qgzJK3E9UGFz8QXKlDt3bh4iGlHgSPWN73hXRDw66DkWarsEQfJOT9I32g
- nGmUyaJyxqG06MXjAiqcvYMeGKsEYqbPQEauwT1tiBIPEixN+XACvNLVIo3N+yK3I/lo
- 06XQaOQbSxpdGTYbZjG79/xxjalY7q//5FPtbBMpTNGrGk1HGiAn2bhtb4QKgeg2Jrgv
- zeQw==
-X-Gm-Message-State: ANhLgQ32+j0QmmJub2TUM3Vw4Zi6OQVEd72Eh5LYGpTP6zA4bXTIiGpo
- qq3aZZywvalZwCoaMvj3/xLG3hNt
-X-Google-Smtp-Source: ADFU+vvoUEAXwp33aQZDhoKwhjpSaUfO6DUYMl+xjTsqQHoydu/0XUhxBWsuBYmzWLNqdnuY4Tgfsg==
-X-Received: by 2002:ac2:4211:: with SMTP id y17mr2880780lfh.157.1583047564305; 
- Sat, 29 Feb 2020 23:26:04 -0800 (PST)
-To: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
-References: <4fa32b94-d9a2-f49d-fa37-08ad3f7a9f53@gmail.com>
- <df81e765-cd82-2b5a-af17-4a1212848592@i-love.sakura.ne.jp>
- <614f1237-638c-e606-eb57-ee71c0bdb373@gmail.com>
- <a5c7fa37-a6c8-b775-49ae-81e2791309c9@i-love.sakura.ne.jp>
-From: Topi Miettinen <toiwoton@gmail.com>
-Message-ID: <bde5fcaa-fe59-e53f-8612-c96110384487@gmail.com>
-Date: Sun, 1 Mar 2020 09:25:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=bBkxLP+znJFrLsc/92CJXicqVgGf3YLZMfYL7WKnH6M=;
+ b=L6HdpaN9ISFChYKDF+dzX+Z5avgte0Z2GCLSU0kiU88/tbaOnD/rI3f1n43s6W61GC
+ f6iVSYMqmcqFqiAPTpyHx3kRWa199+yIrNo9lsheFxT4n40Y2s63PBP3EIJtF7u+rsun
+ hGnRw/IgMgTgP0CC1TZZ7EQFFTwXldBnJdThu76cHFF7cqdgu5xHQW8Di7uCgG9TeEBg
+ EiwkjX1Dc5ELzZA1CTZ7yoytCVJrrQw7BvGtwYEW3PyKIyHdH06bksvyacA+DykP9D/I
+ es0zoV/e3JmZEl5VIKi4endy0WoOlvGHmEVyMx0zhniX00lBO4FsyhnXgUP4DaV1VZ1F
+ hpig==
+X-Gm-Message-State: ANhLgQ2Eem17uPAprpgdzh79/TP7HE+QP+x3EzOFoEG//Cvb76oM6PDM
+ rSWQ4rjrB8IDNKOLd/ZlZUK57abMn0aet56yK05AMod5
+X-Google-Smtp-Source: ADFU+vvCmEk78tHVNx0MMxLNyPciE8ev14Z1Br2YF1ghLvGYlCS6pow1pf1hohNLrxhn1/aoTYMnmCQq2//LHK/u5FM=
+X-Received: by 2002:a67:2ed2:: with SMTP id u201mr9108748vsu.209.1584118209719; 
+ Fri, 13 Mar 2020 09:50:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <a5c7fa37-a6c8-b775-49ae-81e2791309c9@i-love.sakura.ne.jp>
-Content-Type: multipart/mixed; boundary="------------98BFC3E3351816A5A7FE6632"
-Content-Language: en-US
+From: Manuel Bessler <manuel.bessler@gmail.com>
+Date: Fri, 13 Mar 2020 12:49:58 -0400
+Message-ID: <CAKSdS8LsdbQT7CfRSkDRYQ_5wKOH4Aj8euZ9+e5ZBqSZyO+SZA@mail.gmail.com>
+To: tomoyo-users-en@lists.osdn.me
 X-Virus-Status: No
 X-Virus-Checker-Version: clamassassin 1.2.4 with clamdscan / ClamAV
- 0.102.2/25737/Sat Feb 29 21:12:46 2020
-Subject: [tomoyo-users-en 724] Re: [PATCH] Add systemd service for
- tomoyo-auditd
+ 0.102.2/25750/Fri Mar 13 22:03:09 2020
+Subject: [tomoyo-users-en   725] domain_policy output from learning mode
 X-BeenThere: tomoyo-users-en@lists.osdn.me
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,185 +61,112 @@ List-Help: <mailto:tomoyo-users-en-request@lists.osdn.me?subject=help>
 List-Subscribe: <https://lists.osdn.me/mailman/listinfo/tomoyo-users-en>,
  <mailto:tomoyo-users-en-request@lists.osdn.me?subject=subscribe>
 Reply-To: tomoyo-users-en@lists.osdn.me
-Cc: tomoyo-users-en@lists.osdn.me
+Content-Type: multipart/mixed; boundary="===============6429961050993024871=="
 Errors-To: tomoyo-users-en-bounces@lists.osdn.me
 Sender: "tomoyo-users-en" <tomoyo-users-en-bounces@lists.osdn.me>
 
-This is a multi-part message in MIME format.
---------------98BFC3E3351816A5A7FE6632
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+--===============6429961050993024871==
+Content-Type: multipart/alternative; boundary="0000000000002c3df605a0bf43d7"
 
-On 1.3.2020 1.04, Tetsuo Handa wrote:
-> On 2020/03/01 0:41, Topi Miettinen wrote:
->> On 29.2.2020 7.30, Tetsuo Handa wrote:
->>> Hello.
->>>
->>> On 2020/02/24 6:27, Topi Miettinen wrote:
->>>> Enable many hardening features provided by systemd for tomoyo-auditd.
->>>>
->>>> Signed-off-by: Topi Miettinen <toiwoton@gmail.com>
->>>> ---
->>>>    Include.make                                 |  1 +
->>>>    Makefile                                     |  1 +
->>>>    usr_lib_systemd_system/Makefile              |  7 ++++
->>>>    usr_lib_systemd_system/tomoyo-auditd.service | 39 ++++++++++++++++++++
->>>>    4 files changed, 48 insertions(+)
->>>>    create mode 100644 usr_lib_systemd_system/Makefile
->>>>    create mode 100644 usr_lib_systemd_system/tomoyo-auditd.service
->>>
->>> Thank you for a patch, but I can't apply this patch because this service file requires
->>> more recent systemd versions. I get following errors on systemd-219-67.el7_7.3.x86_64:
->>
->> Sorry for the rant, but version 219 of systemd is 5 years old. Why on earth would anyone
->> use that together with new version of tomoyo-tools from 2020? Typically software is developed
->> against current versions of other dependent software, or at least current versions, which are
->> common in major distributions like Fedora, Debian or Arch. Otherwise, if there are
->> incompatibilities or regressions with the new versions, this will be discovered (in the worst
->> case) many years after the other packages have been released. It's the job of those downstream
->> distributions, who want to support stable versions or old versions of the software, to backport
->> or remove new features which are not yet available in the old versions of other packages.
-> 
-> Excuse me, but version 219-67.el7_7.3 of systemd is the latest version for RHEL7/CentOS7 users.
-> I am developing latest kernels on CentOS7. Developing and testing on various environments/
-> platforms is good for finding incompatibilities/regressions. But I can't afford testing all
-> distribution/platform's all applications. Thus, bug reports from users (like
-> https://osdn.net//projects/tomoyo/ticket/40012 ) are welcomed.
-> 
->>
->> But if you insist, I can comment out the lines and add a comment stating that it's recommended
->> to enable these for current versions systemd.
-> 
-> Also, there are distributions which do not use systemd. It would be possible to include this service
-> file into the tar ball or the online documentation, but I don't want to unconditionally install this
-> service file. Thus, I insist that I can't apply this change which unconditionally requires
-> availability of upstream latest systemd.
+--0000000000002c3df605a0bf43d7
+Content-Type: text/plain; charset="UTF-8"
 
-OK, please find attached an updated version.
+Hi,
 
-The .service files do nothing in case systemd isn't used. Even if the 
-file is installed on a system with systemd, package installation script 
-or the local system administrator has to enable the service before it 
-can take effect.
+thank you for your work on this awesome project, I really like Tomoyo, esp
+its learning mode.
+Also thank you specifically for the documentation section "TOMOYO Linux on
+Yocto"
 
--Topi
+I'd like to understand a few things, and I could not find a reference in
+the documentation...
 
---------------98BFC3E3351816A5A7FE6632
-Content-Type: text/x-diff; charset=UTF-8;
- name="0001-Add-systemd-service-for-tomoyo-auditd.patch"
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment;
- filename="0001-Add-systemd-service-for-tomoyo-auditd.patch"
+1. The learning-mode generated domain policy has a couple of combinations
+of rules added like
+   file getattr <file>
+   file read/getattr <file>
+   file getattr/truncate <file>
+   file read/write/getattr <file>
+   file read/write <file>
+   file append/getattr <file>
 
->From 4934ff16baeadcfd9c9319f6ad745adec6a1d710 Mon Sep 17 00:00:00 2001
-From: Topi Miettinen <toiwoton@gmail.com>
-Date: Sun, 23 Feb 2020 23:14:43 +0200
-Subject: [PATCH] Add systemd service for tomoyo-auditd
+   Can I just list these separately, or combine then in different ways to
+make ? For example:
+   file getattr <any-file>
+   file create/append/write/truncate/rename <write-file>
+   file read <readonly-file>
 
-Enable many hardening features provided by systemd for tomoyo-auditd.
+   Or even just:
+   file
+getattr/read/write/append/trucate/execute/unlink/symlink/rename/create
+<file>
 
-Signed-off-by: Topi Miettinen <toiwoton@gmail.com>
----
- Include.make                                 |  1 +
- Makefile                                     |  1 +
- usr_lib_systemd_system/Makefile              |  7 ++++
- usr_lib_systemd_system/tomoyo-auditd.service | 44 ++++++++++++++++++++
- 4 files changed, 53 insertions(+)
- create mode 100644 usr_lib_systemd_system/Makefile
- create mode 100644 usr_lib_systemd_system/tomoyo-auditd.service
+2. There was a patch to ccs-patch in 2015 adding support for multiple
+use_group <n>
+    per domain.
+    Did this ever make it into Tomoyo? From a quick glance, it doesn't look
+like it, but
+    I wanted to make sure before I get deep into policy writing.
 
-diff --git a/Include.make b/Include.make
-index ff08451..df8efa9 100644
---- a/Include.make
-+++ b/Include.make
-@@ -2,6 +2,7 @@ INSTALL         := install
- SBINDIR         := /sbin
- USRSBINDIR      := /usr/sbin
- USRLIBDIR       := /usr/lib
-+SERVICEDIR      := /usr/lib/systemd/system
- MAN8            := /usr/share/man/man8
- ifndef CFLAGS
- CFLAGS          := -Wall -O2
-diff --git a/Makefile b/Makefile
-index e415823..606cbfc 100644
---- a/Makefile
-+++ b/Makefile
-@@ -8,6 +8,7 @@ install: all
- 	$(MAKE) -C usr_sbin install
- 	$(MAKE) -C usr_lib_tomoyo install
- 	$(MAKE) -C usr_share_man install
-+	$(MAKE) -C usr_lib_systemd_system install
- 
- clean:
- ##
-diff --git a/usr_lib_systemd_system/Makefile b/usr_lib_systemd_system/Makefile
-new file mode 100644
-index 0000000..e3752a4
---- /dev/null
-+++ b/usr_lib_systemd_system/Makefile
-@@ -0,0 +1,7 @@
-+include ../Include.make
-+
-+install:
-+	mkdir -p -m 0755 $(INSTALLDIR)$(SERVICEDIR)
-+	$(INSTALL) -m 0644 *.service $(INSTALLDIR)$(SERVICEDIR)
-+
-+.PHONY: install
-diff --git a/usr_lib_systemd_system/tomoyo-auditd.service b/usr_lib_systemd_system/tomoyo-auditd.service
-new file mode 100644
-index 0000000..af8fe81
---- /dev/null
-+++ b/usr_lib_systemd_system/tomoyo-auditd.service
-@@ -0,0 +1,44 @@
-+# This version works with systemd 219 (Centos 7). The lines commented
-+# out are recommended to be used with more recent versions.
-+
-+[Unit]
-+Before=sysinit.target shutdown.target
-+ConditionSecurity=tomoyo
-+Conflicts=shutdown.target
-+DefaultDependencies=no
-+RequiresMountsFor=/var /sys
-+
-+[Service]
-+CapabilityBoundingSet=
-+DeviceAllow=/dev/null
-+DevicePolicy=strict
-+ExecStart=/usr/sbin/tomoyo-auditd
-+#IPAddressDeny=any
-+#LockPersonality=yes
-+#MemoryDenyWriteExecute=yes
-+NoNewPrivileges=yes
-+PrivateDevices=yes
-+PrivateNetwork=yes
-+PrivateTmp=yes
-+#PrivateUsers=yes
-+ProtectControlGroups=yes
-+ProtectHome=yes
-+#ProtectHostname=yes
-+#ProtectKernelLogs=yes
-+#ProtectKernelModules=yes
-+#ProtectKernelTunables=yes
-+#ProtectSystem=strict
-+ProtectSystem=yes
-+Restart=always
-+RestrictAddressFamilies=
-+#RestrictNamespaces=yes
-+#RestrictRealtime=yes
-+#RestrictSUIDSGID=yes
-+SystemCallArchitectures=native
-+#SystemCallFilter=@system-service
-+#SystemCallFilter=~@chown @clock @cpu-emulation @debug @ipc @module @mount @obsolete @privileged @raw-io @reboot @resources @swap memfd_create mincore mlock mlockall personality
-+Type=forking
-+UMask=0077
-+
-+[Install]
-+WantedBy=multi-user.target
--- 
-2.25.1
+3. Can the various groupings (path_group, number_group, address_group...)
+be used recursively?
+    For example
+    path_group LIBS /lib/lib\*.so\*
+    path_group MYAPP /etc/myapp/\*
+    path_group MYAPP @LIBS
 
 
---------------98BFC3E3351816A5A7FE6632
+I was also wondering if there was a place (ie. github repo) where example
+policies for common programs are kept?
+For example, to run Nginx webserver, there are few things that are common
+across all installs that would make it possible to reuse, and thus one does
+not have to start from scratch...
+
+Thanks,
+Manuel
+
+--0000000000002c3df605a0bf43d7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi,</div><div><br></div><div>thank you for your work =
+on this awesome project, I really like Tomoyo, esp its learning mode.</div>=
+<div>Also thank you specifically for the documentation section &quot;TOMOYO=
+ Linux on Yocto&quot;</div><div><br></div><div>I&#39;d like to understand a=
+ few things, and I could not find a reference in the documentation...</div>=
+<div><br></div><div>1. The learning-mode generated domain policy has a coup=
+le of combinations of rules added like</div><div>=C2=A0=C2=A0 file getattr =
+&lt;file&gt;</div><div>=C2=A0=C2=A0 file read/getattr &lt;file&gt;<br></div=
+><div>=C2=A0=C2=A0 file getattr/truncate &lt;file&gt;</div><div>=C2=A0=C2=
+=A0 file read/write/getattr &lt;file&gt;</div><div>=C2=A0=C2=A0 file read/w=
+rite &lt;file&gt;</div><div>=C2=A0=C2=A0 file append/getattr &lt;file&gt;</=
+div><div><br></div><div>=C2=A0=C2=A0 Can I just list these separately, or c=
+ombine then in different ways to make ? For example:</div><div>=C2=A0=C2=A0=
+ file getattr &lt;any-file&gt;</div><div>=C2=A0=C2=A0 file create/append/wr=
+ite/truncate/rename &lt;write-file&gt;<br></div><div>=C2=A0=C2=A0 file read=
+ &lt;readonly-file&gt;</div><div><br></div><div>=C2=A0=C2=A0 Or even just:<=
+/div><div>=C2=A0=C2=A0 file getattr/read/write/append/trucate/execute/unlin=
+k/symlink/rename/create &lt;file&gt;<br></div><div>=C2=A0=C2=A0 <br></div><=
+div>2. There was a patch to ccs-patch in 2015 adding support for multiple u=
+se_group &lt;n&gt; <br></div><div>=C2=A0=C2=A0=C2=A0 per domain. <br></div>=
+<div>=C2=A0=C2=A0=C2=A0 Did this ever make it into Tomoyo? From a quick gla=
+nce, it doesn&#39;t look like it, but</div><div>=C2=A0=C2=A0=C2=A0 I wanted=
+ to make sure before I get deep into policy writing.</div><div><br></div><d=
+iv>3. Can the various groupings (path_group, number_group, address_group...=
+) be used recursively?</div><div>=C2=A0=C2=A0=C2=A0 For example</div><div>=
+=C2=A0=C2=A0=C2=A0 path_group LIBS /lib/lib\*.so\*</div><div>=C2=A0=C2=A0=
+=C2=A0 path_group MYAPP /etc/myapp/\*</div><div>=C2=A0=C2=A0=C2=A0 path_gro=
+up MYAPP @LIBS</div><div><br></div><div><br></div><div>I was also wondering=
+ if there was a place (ie. github repo) where example policies for common p=
+rograms are kept? <br></div><div>For example, to run Nginx webserver, there=
+ are few things that are common across all installs that would make it poss=
+ible to reuse, and thus one does not have to start from scratch...</div><di=
+v><br></div><div>Thanks,</div><div>Manuel<br></div></div>
+
+--0000000000002c3df605a0bf43d7--
+
+
+--===============6429961050993024871==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -261,5 +176,5 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KdG9tb3lvLXVz
 ZXJzLWVuIG1haWxpbmcgbGlzdAp0b21veW8tdXNlcnMtZW5AbGlzdHMub3Nkbi5tZQpodHRwczov
 L2xpc3RzLm9zZG4ubWUvbWFpbG1hbi9saXN0aW5mby90b21veW8tdXNlcnMtZW4K
 
---------------98BFC3E3351816A5A7FE6632--
+--===============6429961050993024871==--
 

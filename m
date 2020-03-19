@@ -2,8 +2,8 @@ Return-Path: <tomoyo-users-en-bounces@lists.osdn.me>
 X-Original-To: lists+tomoyo-users-en@lfdr.de
 Delivered-To: lists+tomoyo-users-en@lfdr.de
 Received: from lists.osdn.me (gw0.osdn.jp [202.221.179.250])
-	by mail.lfdr.de (Postfix) with ESMTP id D651B18B95B
-	for <lists+tomoyo-users-en@lfdr.de>; Thu, 19 Mar 2020 15:29:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTP id 0839218BC4B
+	for <lists+tomoyo-users-en@lfdr.de>; Thu, 19 Mar 2020 17:20:40 +0100 (CET)
 X-Original-To: tomoyo-users-en@lists.osdn.me
 Delivered-To: lists-post+tomoyo-users-en@lists.osdn.me
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
@@ -11,44 +11,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
 X-Spam-Level: 
 X-Spam-Status: No, score=0.0 required=7.0 tests=FREEMAIL_FROM,T_DKIM_INVALID
  autolearn=disabled version=3.4.2
-Received: from mail-vk1-f177.google.com (mail-vk1-f177.google.com
- [209.85.221.177]) by sf-lists.priv.osdn.jp (Postfix) with ESMTP
- for <tomoyo-users-en@lists.osdn.me>; Thu, 19 Mar 2020 23:29:24 +0900 (JST)
-Received: by mail-vk1-f177.google.com with SMTP id k63so766761vka.7
- for <tomoyo-users-en@lists.osdn.me>; Thu, 19 Mar 2020 07:29:24 -0700 (PDT)
+Received: from mail-vs1-f45.google.com (mail-vs1-f45.google.com
+ [209.85.217.45]) by sf-lists.priv.osdn.jp (Postfix) with ESMTP
+ for <tomoyo-users-en@lists.osdn.me>; Fri, 20 Mar 2020 01:20:38 +0900 (JST)
+Received: by mail-vs1-f45.google.com with SMTP id y138so2052759vsy.0
+ for <tomoyo-users-en@lists.osdn.me>; Thu, 19 Mar 2020 09:20:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=WZRUp3ftXpR3KtuTFdAmnbyjIqCgrHyE/RKk1w41X8I=;
- b=l6PHOY8eThPImsJM9+qfcI/0Deoq6/qIqr6y10FvzkjBbU6nTAIzerOD1qE7BJEhT/
- yU30r/GsKlTz82NhnsLy+K0c7av0PP2/X/fJqCctZkz/HPHpyLSBbjanSAyJ8C4Baro0
- 4iZ4BsuotFi25cGwx0wA8OhKcZZincKsx1YmtHE/vF5snt+iQvG3gQ1PewzDUIhUEnpJ
- UeBwYHcMjx7xJvvvbqumAvzC1T+XSj+m4yf73DP0D/wwH6Bb3Yqh39ygfrdg8v2puoMd
- Q/R5We6XOZO7/pHH/E/l8X9yY/ME3UzCGn9ZNkbamBbdu3kfkVLgm2RVwty27yD/To4a
- oS/g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=MJoUL4/S0lYnXceTzxgxPthzqX5CBpwVzLdqg4B7lIE=;
+ b=SDruWfP1zoR+fdRF17Av6thRY1XuvlWBgqo+tcH6kSYTjNrQ9lwGB1iVIKCFcaxZXt
+ F6Ta9SzgcYz5DOav6BRekWtVo9c5NH4s/Fumo1x18naC5Uo3fscMme/OJQEZjLZXFRHh
+ GIeT8pdrbqkgB2x9XnjSLPJoxiXXTSfOByCm4oMiS5OH+4E/P/JNDfQgNrCxy4ZFTuBb
+ vRKTRWFSXc5Rs2F9HhBSvsRU0kB7H6IX6NeM15/1yOvf/qVHHhOjaUsK7Bf/auhz6Xe5
+ Emcn2YhQ2ihNB6ysH965ClC58nSjJUv/f8UgZzTtZ9rY7jKqmc+4Sjn8e/9t9Sz8s0y6
+ aBvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=WZRUp3ftXpR3KtuTFdAmnbyjIqCgrHyE/RKk1w41X8I=;
- b=dNy5gJnM3KFvKLQenfJPRWSiIWzLj6PpA9zDaTFOJ5OQ9geoW6StSPw4uUlxNH1Awy
- s2R9EmsMqG7Xo0llfU7ccL02Qr6kVELTlKq0dzfnIcKTGdQp1bMFUbg3ABZwbmt9vmZp
- RxTqB5Xb9A4p5y0eiot6dEwSeG4mvMm0HvjLFwpC8d7Dbld7XtOxYZBuPrzfwwgZciWt
- JLqUuFYGslliaXLd1TlYkxbnMRCKQt5Cyx+G3poJB180og7JAIOPDYHqRV55SkX6jcvR
- N2RPxT7fL29oIIKcTUZRxR76iVOcV/lLxQDErGoBcmgrAS62UyiIu2knBDE4wm3bGe8P
- 6goA==
-X-Gm-Message-State: ANhLgQ3XhnUvsjSW4N+8DxVQLg+DPwBdPeJ2zAxenwpYoM7fS3RIik5T
- wIzeAYEJkzlxQHIkczn6TuRrkJxgQwsZkw+5WwWhobXZ
-X-Google-Smtp-Source: ADFU+vsKJZruUE9UZRKkVxjlr5ZOhI3GOmAs3M2BtVwp9U96FSoGL7XwMYj97dcC15LBIkDk3U3cVfPIrkBV2qrcJOk=
-X-Received: by 2002:a1f:d084:: with SMTP id h126mr2524314vkg.25.1584628163259; 
- Thu, 19 Mar 2020 07:29:23 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=MJoUL4/S0lYnXceTzxgxPthzqX5CBpwVzLdqg4B7lIE=;
+ b=XynkTy4uFz7/5SIuIeNJFmxCIFIhy8/urSwhyTG5R9FlfvKEarR2BKgxzrF7vTDc2e
+ fmDd42Py3RebK0QQDJyEz8qxyu5NtTYwHiEF0Q5rUn/Y1McenqZf0GGTJlQcGOutvt7d
+ ALRiVQKAuFZBnKz7Pvw3KpaP7qLnJZMLN1GLeLMFvTTebrZB4YJwRp7ONYOtfODRXNzW
+ OJ6P3tzyqG1WAiA6d10wWp0vqmT7G9rYeCtn1WLX38qKVm+7eTz75Ms8Q9171uqrLLqO
+ wp4JRszLgsqjcett1RPNo78OwjaW9kgj2zi93Q7Y3ior9f0xVF3yjrA1erW7Fm1vLquc
+ 7D2g==
+X-Gm-Message-State: ANhLgQ3Jh1Y6s6T8Dy4kZqw8sUY2Ln5ShQiibxbNtesqzYvEmej4oWWI
+ Z1O3OPNoUYpVcS5UBaLhT4KQ/3t6XD6MjINVwJdDPw==
+X-Google-Smtp-Source: ADFU+vu4zhx8aOwcQoAjKkC5I80zxdXMK4UKzMHrdYlYj+7TXQx8kMlv2PPBFjK0ay8pP78n5EoTUO3QNyO2QVb/QG8=
+X-Received: by 2002:a67:2ed2:: with SMTP id u201mr2821904vsu.209.1584634836528; 
+ Thu, 19 Mar 2020 09:20:36 -0700 (PDT)
 MIME-Version: 1.0
+References: <CAKSdS8LmFMvtWQ=chjLOODTyWtbtygkv5Jdt-xRCBeyjYHS8zw@mail.gmail.com>
+In-Reply-To: <CAKSdS8LmFMvtWQ=chjLOODTyWtbtygkv5Jdt-xRCBeyjYHS8zw@mail.gmail.com>
 From: Manuel Bessler <manuel.bessler@gmail.com>
-Date: Thu, 19 Mar 2020 10:29:12 -0400
-Message-ID: <CAKSdS8LmFMvtWQ=chjLOODTyWtbtygkv5Jdt-xRCBeyjYHS8zw@mail.gmail.com>
+Date: Thu, 19 Mar 2020 12:20:24 -0400
+Message-ID: <CAKSdS8LKnUhZsX=Wi6fbU++WQCGOf-g60UvVtwcpBKTxUb1Bvg@mail.gmail.com>
 To: tomoyo-users-en@lists.osdn.me
 X-Virus-Status: No
 X-Virus-Checker-Version: clamassassin 1.2.4 with clamdscan / ClamAV
  0.102.2/25756/Thu Mar 19 22:11:06 2020
-Subject: [tomoyo-users-en   728] exception policy: aggregator behavior
+Subject: [tomoyo-users-en   729] Re: exception policy: aggregator behavior
 X-BeenThere: tomoyo-users-en@lists.osdn.me
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,20 +69,24 @@ Content-Transfer-Encoding: base64
 Errors-To: tomoyo-users-en-bounces@lists.osdn.me
 Sender: "tomoyo-users-en" <tomoyo-users-en-bounces@lists.osdn.me>
 
-SGksCgpJJ20gdHJ5aW5nIHRvIG1ha2UgdXNlIG9mIHRoZSBhZ2dyZWdhdG9yIGZlYXR1cmUgYnV0
-IGVpdGhlciBJJ20KbWlzdW5kZXJzdGFuZGluZyBpdCBvciB1c2luZyBpdCB3cm9uZy4uLgoKRm9y
-IGV4YW1wbGUgSSB3b3VsZCBsaWtlIHRvIHRyZWF0IC9iaW4vYmFzaCwgL2Jpbi9kYXNoLCBhbmQg
-L2Jpbi9zaAp0aGUgc2FtZSwgYm90aCBmb3Igc2hlbGwgc2NyaXB0cyBhbmQgZXNwLiBmb3IgaW50
-ZXJhY3RpdmUgc2hlbGxzLgpTbyBJIHB1dCB0aGlzIGludG8gbXkgZXhjZXB0aW9uIHBvbGljeToK
-YWdncmVnYXRvciAvYmluL2Jhc2ggL2Jpbi9zaAphZ2dyZWdhdG9yIC9iaW4vZGFzaCAvYmluL3No
-CgpBbmQgaW4gbXkgZG9tYWluIHBvbGljeSByZWZlcmVuY2UgdGhpbmdzIGp1c3QgYmUgYnkgL2Jp
-bi9zaCwgZWc6CjxrZXJuZWw+IC91c3Ivc2Jpbi9zc2hkIC9iaW4vc2gKPGtlcm5lbD4gL2Jpbi9z
-aCAvdXNyL2Jpbi9zdWRvIC9iaW4vc2gKPGtlcm5lbD4gL2Jpbi9zaAoKSSB3YXMgaG9waW5nIHRo
-YXQgd291bGQgd29yayB3aGV0aGVyIGEgdXNlcidzIHNoZWxsIGlzIGJhc2gsIGRhc2gsIG9yIHNo
-LgpIb3dldmVyLCBpdCBkb2VzIG5vdCB3b3JrLCBzc2gnaW5nIGluIGFzIGEgdXNlciB3aXRoIHNo
-ZWxsIC9iaW4vYmFzaAppcyBub3QgYWxsb3dlZCB1bnRpbCBJIGV4cGxpY2l0bHkgYWxsb3cKPGtl
-cm5lbD4gL3Vzci9zYmluL3NzaGQgL2Jpbi9iYXNoCgpJJ20gdXNpbmcgVG9tb3lvIDIuNS4KClRo
-YW5rcywKTWFudWVsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwp0b21veW8tdXNlcnMtZW4gbWFpbGluZyBsaXN0CnRvbW95by11c2Vycy1lbkBsaXN0cy5v
-c2RuLm1lCmh0dHBzOi8vbGlzdHMub3Nkbi5tZS9tYWlsbWFuL2xpc3RpbmZvL3RvbW95by11c2Vy
-cy1lbgo=
+TmV2ZXIgbWluZCwgSSBmb3VuZCB0aGF0IHRoZSBzc2hkIHJ1bGUgd2FzIGVuZm9yY2luZyBidXQg
+bWlzc2VkIGFuCidmaWxlIGV4ZWN1dGUnIGVudHJ5IGZvciAvYmluL2Jhc2gKCk9uIFRodSwgTWFy
+IDE5LCAyMDIwIGF0IDEwOjI5IEFNIE1hbnVlbCBCZXNzbGVyCjxtYW51ZWwuYmVzc2xlckBnbWFp
+bC5jb20+IHdyb3RlOgo+Cj4gSGksCj4KPiBJJ20gdHJ5aW5nIHRvIG1ha2UgdXNlIG9mIHRoZSBh
+Z2dyZWdhdG9yIGZlYXR1cmUgYnV0IGVpdGhlciBJJ20KPiBtaXN1bmRlcnN0YW5kaW5nIGl0IG9y
+IHVzaW5nIGl0IHdyb25nLi4uCj4KPiBGb3IgZXhhbXBsZSBJIHdvdWxkIGxpa2UgdG8gdHJlYXQg
+L2Jpbi9iYXNoLCAvYmluL2Rhc2gsIGFuZCAvYmluL3NoCj4gdGhlIHNhbWUsIGJvdGggZm9yIHNo
+ZWxsIHNjcmlwdHMgYW5kIGVzcC4gZm9yIGludGVyYWN0aXZlIHNoZWxscy4KPiBTbyBJIHB1dCB0
+aGlzIGludG8gbXkgZXhjZXB0aW9uIHBvbGljeToKPiBhZ2dyZWdhdG9yIC9iaW4vYmFzaCAvYmlu
+L3NoCj4gYWdncmVnYXRvciAvYmluL2Rhc2ggL2Jpbi9zaAo+Cj4gQW5kIGluIG15IGRvbWFpbiBw
+b2xpY3kgcmVmZXJlbmNlIHRoaW5ncyBqdXN0IGJlIGJ5IC9iaW4vc2gsIGVnOgo+IDxrZXJuZWw+
+IC91c3Ivc2Jpbi9zc2hkIC9iaW4vc2gKPiA8a2VybmVsPiAvYmluL3NoIC91c3IvYmluL3N1ZG8g
+L2Jpbi9zaAo+IDxrZXJuZWw+IC9iaW4vc2gKPgo+IEkgd2FzIGhvcGluZyB0aGF0IHdvdWxkIHdv
+cmsgd2hldGhlciBhIHVzZXIncyBzaGVsbCBpcyBiYXNoLCBkYXNoLCBvciBzaC4KPiBIb3dldmVy
+LCBpdCBkb2VzIG5vdCB3b3JrLCBzc2gnaW5nIGluIGFzIGEgdXNlciB3aXRoIHNoZWxsIC9iaW4v
+YmFzaAo+IGlzIG5vdCBhbGxvd2VkIHVudGlsIEkgZXhwbGljaXRseSBhbGxvdwo+IDxrZXJuZWw+
+IC91c3Ivc2Jpbi9zc2hkIC9iaW4vYmFzaAo+Cj4gSSdtIHVzaW5nIFRvbW95byAyLjUuCj4KPiBU
+aGFua3MsCj4gTWFudWVsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwp0b21veW8tdXNlcnMtZW4gbWFpbGluZyBsaXN0CnRvbW95by11c2Vycy1lbkBsaXN0
+cy5vc2RuLm1lCmh0dHBzOi8vbGlzdHMub3Nkbi5tZS9tYWlsbWFuL2xpc3RpbmZvL3RvbW95by11
+c2Vycy1lbgo=

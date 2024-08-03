@@ -2,64 +2,43 @@ Return-Path: <tomoyo-users-en-bounces@lists.osdn.me>
 X-Original-To: lists+tomoyo-users-en@lfdr.de
 Delivered-To: lists+tomoyo-users-en@lfdr.de
 Received: from lists.osdn.me (lists.osdn.me [44.238.218.2])
-	by mail.lfdr.de (Postfix) with ESMTP id D4F9F944F9E
-	for <lists+tomoyo-users-en@lfdr.de>; Thu,  1 Aug 2024 17:47:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTP id A4CE794688B
+	for <lists+tomoyo-users-en@lfdr.de>; Sat,  3 Aug 2024 09:38:28 +0200 (CEST)
 Received: from [127.0.0.1] (localhost [127.0.0.1])
-	by lists.osdn.me (Postfix) with ESMTP id 6448B144F99;
-	Fri,  2 Aug 2024 00:47:48 +0900 (JST)
+	by lists.osdn.me (Postfix) with ESMTP id 25153144F65;
+	Sat,  3 Aug 2024 16:38:27 +0900 (JST)
 X-Original-To: tomoyo-users-en@lists.osdn.me
 Delivered-To: lists-post+tomoyo-users-en@lists.osdn.me
 Received: from lists.osdn.me (localhost [127.0.0.1])
- by lists.osdn.me (Postfix) with ESMTP id D3357144F90
- for <tomoyo-users-en@lists.osdn.me>; Fri,  2 Aug 2024 00:47:46 +0900 (JST)
+ by lists.osdn.me (Postfix) with ESMTP id 08C2F144F61
+ for <tomoyo-users-en@lists.osdn.me>; Sat,  3 Aug 2024 16:38:25 +0900 (JST)
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on sf-lists
-X-Spam-Level: *
-X-Spam-Status: No, score=1.2 required=7.0 tests=FREEMAIL_FROM,HTML_MESSAGE,
- T_DKIM_INVALID autolearn=disabled version=3.4.2
-Received: from mail-lj1-f175.google.com (mail-lj1-f175.google.com
- [209.85.208.175]) by lists.osdn.me (Postfix) with ESMTP
- for <tomoyo-users-en@lists.osdn.me>; Fri,  2 Aug 2024 00:47:46 +0900 (JST)
-Received: by mail-lj1-f175.google.com with SMTP id
- 38308e7fff4ca-2f0271b0ae9so85504581fa.1
- for <tomoyo-users-en@lists.osdn.me>; Thu, 01 Aug 2024 08:47:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1722527265; x=1723132065; darn=lists.osdn.me;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=JiyhyUuGWmJMhXhpGx3CTcxRvoLN4Ot3BjYKDXnFQBM=;
- b=RMJuGOCv9fx5WUGng7vAo75txtkOgEx3jTbmNb/QfDt7Bp6tKl95RRp0GK1nTba+wh
- tnD8P3FFHFEItqE0oX+d3jJ+N1fvkR8p8TfWcRZRMRfk6v71fTn+V2FQ3xt++W0WYA1j
- 7fozdOofQxSlrLI34yQlpDO4E6BmEijH07jvIAdVJJjkVi5Xzz3SK9Q7wOndVJJA+tB1
- JS2YwoWyxkPtOL7w/0sbUva8www1fiyiiZCa8uG1gVZma4xEJgNSt/JB6npzAeboMuyI
- FS1Fz/3ourV9SqQGMnM/ImToNoLE/t35AWfbsxIZs8yUbrUop67A/yQLGJWgGlTHgN1Z
- UZxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722527265; x=1723132065;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=JiyhyUuGWmJMhXhpGx3CTcxRvoLN4Ot3BjYKDXnFQBM=;
- b=ImtYmD0Y6EZcVI7b5v5M4ciuX4G0otHiWVEGfCCgzhyQaOsFzI5Ex+24ANwIu6ky2B
- Y0gjVgQmUQ9QZ2afrUv0vXEzAOf66tLO9aGsIzexk+ZNKGYn4gQzZbLSIGNsuyblmWSB
- wA2rvswDoc/8xj9S7qPqLeOYb+3mFs75pOl2KrWzxkz8gw2fDY2C3P5h3vaX0tqh0Swv
- Zdh+RaG2LYQhDRVt0W1wBVhNh+G53byVGw/p4VsyIjBhgdPtYwBTjtHdc1gufAw1D/+8
- m3NTS7qwb1wz+ef1D4ex/78wEUinE4oiH0d54gsH9cS24HGitycJeZr5RaHyoGCv9IR7
- 50og==
-X-Gm-Message-State: AOJu0YxpgTSmgLYOIxvyzvTHzS/HrXbj09YElrIs+6EcVuVvAliANLPk
- XTcjAqzXO53zsvHyBpBneYTwQSEbF9GkozDDzD4YpsyxMFyW7ctdxzUD5bFIQyAV5tKv4ljAP53
- CYv4Wwil5gDFzJAV5ICuovmf8EmtrUHUd
-X-Google-Smtp-Source: AGHT+IFCy42XfugplwXTb7gJysJOReSsnneyU4oHUf6pG67APwChFvnNXT4WZ/XxXMaLs0plH/XXrtj6exsBNE5hTMk=
-X-Received: by 2002:a2e:9606:0:b0:2f0:3cff:30ce with SMTP id
- 38308e7fff4ca-2f15a9f0284mr5215921fa.0.1722527265231; Thu, 01 Aug 2024
- 08:47:45 -0700 (PDT)
+X-Spam-Level: 
+X-Spam-Status: No, score=0.0 required=7.0 tests=none autolearn=disabled
+ version=3.4.2
+Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
+ by lists.osdn.me (Postfix) with ESMTP
+ for <tomoyo-users-en@lists.osdn.me>; Sat,  3 Aug 2024 16:38:24 +0900 (JST)
+Received: from fsav415.sakura.ne.jp (fsav415.sakura.ne.jp [133.242.250.114])
+ by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 4737cLNW045658;
+ Sat, 3 Aug 2024 16:38:21 +0900 (JST)
+ (envelope-from penguin-kernel@I-love.SAKURA.ne.jp)
+Received: from www262.sakura.ne.jp (202.181.97.72)
+ by fsav415.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav415.sakura.ne.jp);
+ Sat, 03 Aug 2024 16:38:21 +0900 (JST)
+Message-ID: <1de1f959-51e4-4af3-93f8-645775a9c6b0@I-love.SAKURA.ne.jp>
+Date: Sat, 3 Aug 2024 16:38:21 +0900
 MIME-Version: 1.0
-From: Esteban Gil <styf300@gmail.com>
-Date: Thu, 1 Aug 2024 17:47:34 +0200
-Message-ID: <CAL2A2Va_Of1oyFEPwHhdy2Y7G8QAj7d=jwF-2SAbjvtk9uV_8g@mail.gmail.com>
-To: tomoyo-users-en@lists.osdn.me
+User-Agent: Mozilla Thunderbird
+To: Esteban Gil <styf300@gmail.com>
+References: <CAL2A2Va_Of1oyFEPwHhdy2Y7G8QAj7d=jwF-2SAbjvtk9uV_8g@mail.gmail.com>
+Content-Language: en-US
+From: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
+In-Reply-To: <CAL2A2Va_Of1oyFEPwHhdy2Y7G8QAj7d=jwF-2SAbjvtk9uV_8g@mail.gmail.com>
 X-Virus-Status: No
 X-Virus-Checker-Version: clamassassin 1.2.4 with clamdscan / ClamAV
  0.102.4/26439/Mon Jan 31 18:24:40 2022
-Subject: [tomoyo-users-en   758] Policy namespaces
+Subject: [tomoyo-users-en   759] Re: Policy namespaces
 X-BeenThere: tomoyo-users-en@lists.osdn.me
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,64 +51,53 @@ List-Help: <mailto:tomoyo-users-en-request@lists.osdn.me?subject=help>
 List-Subscribe: <https://lists.osdn.me/mailman/listinfo/tomoyo-users-en>,
  <mailto:tomoyo-users-en-request@lists.osdn.me?subject=subscribe>
 Reply-To: tomoyo-users-en@lists.osdn.me
-Content-Type: multipart/mixed; boundary="===============7405816679293534732=="
+Cc: tomoyo-users-en@lists.osdn.me
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: tomoyo-users-en-bounces@lists.osdn.me
 Sender: "tomoyo-users-en" <tomoyo-users-en-bounces@lists.osdn.me>
 
---===============7405816679293534732==
-Content-Type: multipart/alternative; boundary="000000000000c2a7c2061ea121a8"
-
---000000000000c2a7c2061ea121a8
-Content-Type: text/plain; charset="UTF-8"
-
-Hello,
-I am developing an ACL with Akari for my server that is running several
-Docker containers and I wanna be able to clearly differentiate the domains
-from the host machine from the ones in containers.
-Since I have it configured to always initialize new domains
-(initialize_domain any from any) because I find it easier to work with, I
-thought of using namespaces to achieve this.
-However, by reading the docs I understood that you also need to define new
-exception and profile policies for every new namespace you introduce. In my
-case that would mean duplicating the existing ones for each namespace and
-adding the appropriate namespace prefix. I was wondering if there is a way
-of telling Akari/Tomoyo to ignore namespaces in exception and profile
-policies and just use the built-in one. If not, what would be the code
-changes necessary to achieve this?
-
-Thank you!
-
---000000000000c2a7c2061ea121a8
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello,<div>I am developing an ACL with Akari for my server=
- that is running several Docker containers and I wanna be able to clearly d=
-ifferentiate=C2=A0the domains from the host machine from the ones in contai=
-ners.=C2=A0</div><div>Since I have it configured to always initialize new d=
-omains (initialize_domain any from any)=C2=A0because=C2=A0I find it easier =
-to work with, I thought of using namespaces to achieve this.</div><div>Howe=
-ver, by reading the docs I understood that you also need to define new exce=
-ption and profile policies for every new namespace you introduce. In my cas=
-e that would mean duplicating the existing ones for each namespace and addi=
-ng the appropriate namespace prefix. I was wondering if there is a way of t=
-elling Akari/Tomoyo to ignore namespaces in exception and profile policies =
-and just use the built-in one. If not, what would be the code changes neces=
-sary=C2=A0to achieve this?</div><div><br></div><div>Thank you!</div><div><b=
-r></div></div>
-
---000000000000c2a7c2061ea121a8--
-
-
---===============7405816679293534732==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KdG9tb3lvLXVz
-ZXJzLWVuIG1haWxpbmcgbGlzdAp0b21veW8tdXNlcnMtZW5AbGlzdHMub3Nkbi5tZQpodHRwczov
-L2xpc3RzLm9zZG4ubWUvbWFpbG1hbi9saXN0aW5mby90b21veW8tdXNlcnMtZW4K
-
---===============7405816679293534732==--
-
+SGVsbG8uCgpPbiAyMDI0LzA4LzAyIDA6NDcsIEVzdGViYW4gR2lsIHdyb3RlOgo+IEhlbGxvLAo+
+IEkgYW0gZGV2ZWxvcGluZyBhbiBBQ0wgd2l0aCBBa2FyaSBmb3IgbXkgc2VydmVyIHRoYXQgaXMg
+cnVubmluZyBzZXZlcmFsCj4gRG9ja2VyIGNvbnRhaW5lcnMgYW5kIEkgd2FubmEgYmUgYWJsZSB0
+byBjbGVhcmx5IGRpZmZlcmVudGlhdGUgdGhlIGRvbWFpbnMKPiBmcm9tIHRoZSBob3N0IG1hY2hp
+bmUgZnJvbSB0aGUgb25lcyBpbiBjb250YWluZXJzLgo+IFNpbmNlIEkgaGF2ZSBpdCBjb25maWd1
+cmVkIHRvIGFsd2F5cyBpbml0aWFsaXplIG5ldyBkb21haW5zCj4gKGluaXRpYWxpemVfZG9tYWlu
+IGFueSBmcm9tIGFueSkgYmVjYXVzZSBJIGZpbmQgaXQgZWFzaWVyIHRvIHdvcmsgd2l0aCwgSQo+
+IHRob3VnaHQgb2YgdXNpbmcgbmFtZXNwYWNlcyB0byBhY2hpZXZlIHRoaXMuCgpJIGNhbiBzZWUg
+eW91IHdhbnQgdG8gZG8gc29tZXRoaW5nIGZvciBwcm9jZXNzZXMgcnVuIGluIGNvbnRhaW5lcnMu
+CkJ1dCBJIGNhbid0IHNlZSB3aHkgeW91IGFyZSB1c2luZyAiaW5pdGlhbGl6ZV9kb21haW4gYW55
+IGZyb20gYW55Ii4KUGxlYXNlIGVudW1lcmF0ZSB3aGF0IHlvdSB3YW50IHRvIGRvIHVzaW5nIGJ1
+bGxldCBwb2ludC4KCkRvIHlvdSB3YW50IHRvIGFwcGx5IHNvbWUgcmVzdHJpY3Rpb25zIGZvciBw
+cm9jZXNzZXMgb3V0c2lkZSBvZiBkb2NrZXI/CklmIG5vLCBJIHdvbmRlciB3aHkgeW91IHdhbnQg
+dG8gc3BsaXQgZG9tYWlucyBmb3IgcHJvY2Vzc2VzIG91dHNpZGUgb2YKZG9ja2VyOyBJIGd1ZXNz
+IHRoYXQga2VlcF9kb21haW4gd291bGQgZml0IGJldHRlciBmb3Igc3VjaCBwcm9jZXNzZXMKKGFu
+ZCBpbiB0aGF0IGNhc2UgaXQgaXMgcG9zc2libGUgdGhhdCB5b3UgZG9uJ3QgbmVlZCB0byB1c2Ug
+bmFtZXNwYWNlcwphdCBhbGwpLgoKRG8geW91IHdhbnQgdG8gYXBwbHkgc29tZSByZXN0cmljdGlv
+bnMgZm9yIHByb2Nlc3NlcyBpbnNpZGUgb2YgZG9ja2VyPwpJZiB5ZXMsIEkgd29uZGVyIHdoeSB5
+b3UgaGF2ZSB0cm91YmxlcyB3aXRoIHNwbGl0dGluZyBuYW1lc3BhY2VzIGZvcgpwcm9jZXNzZXMg
+aW5zaWRlIG9mIGRvY2tlci4KCj4gSG93ZXZlciwgYnkgcmVhZGluZyB0aGUgZG9jcyBJIHVuZGVy
+c3Rvb2QgdGhhdCB5b3UgYWxzbyBuZWVkIHRvIGRlZmluZSBuZXcKPiBleGNlcHRpb24gYW5kIHBy
+b2ZpbGUgcG9saWNpZXMgZm9yIGV2ZXJ5IG5ldyBuYW1lc3BhY2UgeW91IGludHJvZHVjZS4gSW4g
+bXkKPiBjYXNlIHRoYXQgd291bGQgbWVhbiBkdXBsaWNhdGluZyB0aGUgZXhpc3Rpbmcgb25lcyBm
+b3IgZWFjaCBuYW1lc3BhY2UgYW5kCj4gYWRkaW5nIHRoZSBhcHByb3ByaWF0ZSBuYW1lc3BhY2Ug
+cHJlZml4LiBJIHdhcyB3b25kZXJpbmcgaWYgdGhlcmUgaXMgYSB3YXkKPiBvZiB0ZWxsaW5nIEFr
+YXJpL1RvbW95byB0byBpZ25vcmUgbmFtZXNwYWNlcyBpbiBleGNlcHRpb24gYW5kIHByb2ZpbGUK
+PiBwb2xpY2llcyBhbmQganVzdCB1c2UgdGhlIGJ1aWx0LWluIG9uZS4gSWYgbm90LCB3aGF0IHdv
+dWxkIGJlIHRoZSBjb2RlCj4gY2hhbmdlcyBuZWNlc3NhcnkgdG8gYWNoaWV2ZSB0aGlzPwoKSSBj
+YW4ndCBpbnRlcnByZXQgImlnbm9yZSBuYW1lc3BhY2VzIGluIGV4Y2VwdGlvbiBhbmQgcHJvZmls
+ZSBwb2xpY2llcyBhbmQganVzdAp1c2UgdGhlIGJ1aWx0LWluIG9uZSIuIEJ1dCBJJ20gbm90IGdv
+aW5nIHRvIG1vZGlmeSBBS0FSSS9UT01PWU8gcG9zc2libGUgdG8gdXNlCmV4Y2VwdGlvbiBwb2xp
+Y3kgYW5kIHByb2ZpbGUgcG9saWN5IGluIGRpZmZlcmVudCBuYW1lc3BhY2VzLCBmb3IgYSBuYW1l
+c3BhY2UgaXMKYnkgZGVmaW5pdGlvbiBhbiBpbmRlcGVuZGVudCBzZXQgb2YgcG9saWN5IHRoYXQg
+Y2FuIGJlIG1pZ3JhdGVkIHVzaW5nIGRvbWFpbgp0cmFuc2l0aW9uIGNvbnRyb2wgZGlyZWN0aXZl
+cy4KUGxlYXNlIHNlZSBodHRwczovL3RvbW95by5zb3VyY2Vmb3JnZS5uZXQvYWthcmkvMS4wL2No
+YXB0ZXItMTUuaHRtbC5lbiMxNS40IC4KCkR1cGxpY2F0aW5nIHBvbGljeSBmb3IgbmFtZXNwYWNl
+cyBpcyBiYXNpY2FsbHkgYSBtYXR0ZXIgb2YKcy88c291cmNlX25hbWVzcGFjZT4vPGRlc3RfbmFt
+ZXNwYWNlPi8gb2YgZXhpc3RpbmcvdGVtcGxhdGUgcG9saWN5LgpXaHkgaXMgdGhhdCBkaWZmaWN1
+bHQ/IEFyZSB5b3UgdHJ5aW5nIHRvIGNyZWF0ZSB1bnByZWRpY3RhYmxlIG51bWJlcgpvZiBuYW1l
+c3BhY2VzIGF0IHJ1biB0aW1lIGJlY2F1c2UgeW91IHdhbnQgdG8gYXNzaWduIGEgZGVkaWNhdGVk
+Cm5hbWVzcGFjZSBmb3IgZWFjaCBjb250YWluZXIgaW5zdGFuY2UgYXQgcnVuIHRpbWU/CgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwp0b21veW8tdXNlcnMt
+ZW4gbWFpbGluZyBsaXN0CnRvbW95by11c2Vycy1lbkBsaXN0cy5vc2RuLm1lCmh0dHBzOi8vbGlz
+dHMub3Nkbi5tZS9tYWlsbWFuL2xpc3RpbmZvL3RvbW95by11c2Vycy1lbgo=
